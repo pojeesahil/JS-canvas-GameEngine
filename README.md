@@ -23,6 +23,7 @@ height:99%;
 and called `game.setScreen()`
 
 then this will automatically set canvas pixel size to 99% of your device width and height otherwise you would have to change your canvas pixel ratio manually depending upon devices which can be annoying
+--auto
 
 `game.addSrc('{objectname:objectpath}')` will store object name and path so you can refer object by `getObjectByType('objectname')` which will give you the objectpath
 
@@ -35,6 +36,7 @@ getObjectType("grass");
 
 `game.loadAllImages()` will load all the images(objects) which are given by `game.addSrc()`
 This is necessary to type after game.addSrc();
+--auto 
 
 `game.start()` will start the game as in content on canvas will start getting display
 Put this in your last line of file
