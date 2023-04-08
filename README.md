@@ -13,7 +13,7 @@ function:This will set the canvas as main canvas of game engine
 
 for example:-
 if you wrote this in your css file
-```
+```css
 canvas{
 width:99%;
 height:99%;
@@ -27,7 +27,7 @@ then this will automatically set canvas pixel size to 99% of your device width a
 `game.addSrc('{objectname:objectpath}')` will store object name and path so you can refer object by `getObjectByType('objectname')` which will give you the objectpath
 
 for example:-
-```
+```js
 game.addSrc({"grass":"grass.png","dirt":"dirt.png"});
 //Now you can get grass image Path by
 getObjectType("grass");
@@ -57,7 +57,7 @@ this object can be undisplayed using `game.undisplay(obj)`
 `makeMovingObject(objectname,x,y,width,height)` will make and return the entity(for e.g Player) in {} manner(same as makeObject()) 
 
 for example:-
-```
+```js
 var player;
 function start(){
 //Make entity
@@ -82,7 +82,7 @@ var middle=toPixel("50%")`
 `game.display()` will render the block regardless if object is in render bound or not but `game.render()` will only render objects present inside renderBound
 for example,lets assume canvas width and height to be 1000 and its position at {x:100,y:200}
 and lets make object
-```
+```js
 var block=makeObject("grass",150,250,50,60);
 var block2=makeObject("grass",150,25000,50,60);
 ```
@@ -94,7 +94,7 @@ Now there are two difference between display and render
 e.g 
 
 This will work
-```
+```js
 game.render(Object)
 game.render(Object,object,object,object)
 game.render(Object Array)
@@ -165,7 +165,7 @@ var backg,adv,player;
        //update controller, necessary for controller library
            controller.update();
           //continuously make player center of the screen
-         //  game.lookAt(player.x-(canvas.width/2),player.y-(canvas.height/2));
+           game.lookAt(player.x-(canvas.width/2),player.y-(canvas.height/2));
            
        }
        //Every second, display framerate and render all the objects again
@@ -203,7 +203,7 @@ game.betascale() will scale the objects inside the canvas depending upon the dev
 
 `onlyDraw()` will be called till game gets resume
 
-#Collision:-
+## Collision:-
 `collision.detect(function)` will call the function whenever any collision will happen between objects and entity
 
 `Collision.collider` is collider while `Collision.collided` is object which got collided
@@ -211,10 +211,48 @@ game.betascale() will scale the objects inside the canvas depending upon the dev
 `collision.addDetect()` will update the collision data and call function stored by `collision.detect(function)` --auto
 
 ### **Example Script**
-```
+```js
 collision.detect(function(){
       if(collision.collided.name==="grass"){
       console.log("You got collided with grass");
       }
 });
+```
+
+## Controller.js
+You have to include it seperately in your index.html file
+
+Make sure to include it after your gameEngine.js file
+
+`controller.size` will set size of upcoming controllers
+
+`controller.createDefault(x,y)` creates button at x and y position with size set by controller.size
+
+**Note:** Here, x and y can be any css string, it can be in pixels or in % or any css units
+
+for example:-
+```js
+//creates button at 1000px rightward and 500px downward
+controller.createDefault(1000,500)
+//creates button at 10% rightward and 20% downward
+controller.createDefault("10%,"20")
+//Same as above except units are in em
+controller.createDefault(2em,3em)
+```
+
+`controller.update()` should be included in upgrade() --Necessary
+
+`control.ontouchstay=function()` will call the function continuously till the control(button) is hold
+
+This is default settings
+```js
+controller.size="10%";
+document.body.removeChild(controller.left);
+document.body.removeChild(controller.right);
+document.body.removeChild(controller.bottom);
+document.body.removeChild(controller.top);
+controller.left=controller.createDefault("10%","85%");
+controller.right=controller.createDefault("30%","85%");
+controller.top=controller.createDefault("20%","75%");
+controller.bottom=controller.createDefault("20%","85%");
 ```
