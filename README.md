@@ -13,10 +13,12 @@ function:This will set the canvas as main canvas of game engine
 
 for example:-
 if you wrote this in your css file
-```canvas{
+```
+canvas{
 width:99%;
 height:99%;
-}```
+}
+```
 
 and called `game.setScreen()`
 
