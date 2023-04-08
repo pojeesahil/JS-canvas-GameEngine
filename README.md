@@ -117,7 +117,7 @@ This will not work
 multiply this with all physics values so they remain aligned even in low-end devices which have low framerate
 
 ## Basic Script
-```
+```js
 //Define variables
 var backg,adv,player;
 //automatically selects canvas
@@ -174,7 +174,7 @@ var backg,adv,player;
          game.render(backg,player);
        },1000);
        game.start();
-       ```
+```
        
        
  ## Advanced
