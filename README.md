@@ -10,21 +10,26 @@ your first line should be `game.setCanvas('refer canvas here')` or just `game.se
 function:This will set the canvas as main canvas of game engine
 
 `game.setScreen()` will apply your canvas css property of width and height to canvas(note:this means you could use '%' which couldn't be used before)
+
 for example:-
 if you wrote this in your css file
-`canvas{
+```canvas{
 width:99%;
 height:99%;
-}`
-and called
-`game.setScreen()`
+}```
+
+and called `game.setScreen()`
+
 then this will automatically set canvas pixel size to 99% of your device width and height otherwise you would have to change your canvas pixel ratio manually depending upon devices which can be annoying
 
 `game.addSrc('{objectname:objectpath}')` will store object name and path so you can refer object by `getObjectByType('objectname')` which will give you the objectpath
-for example
-`game.addSrc({"grass":"grass.png","dirt":"dirt.png"});
+
+for example:-
+```
+game.addSrc({"grass":"grass.png","dirt":"dirt.png"});
 //Now you can get grass image Path by
-getObjectType("grass");`
+getObjectType("grass");
+```
 
 `game.loadAllImages()` will load all the images(objects) which are given by `game.addSrc()`
 This is necessary to type after game.addSrc();
@@ -48,14 +53,17 @@ this object can be undisplayed using `game.undisplay(obj)`
 `makeObjectArray(makeObject(args),x,y,x2,y2,extra)` will make array of objects starting from (x1,y1) to (x2,y2) and giving each object property (extra) in {JSON} format
 
 `makeMovingObject(objectname,x,y,width,height)` will make and return the entity(for e.g Player) in {} manner(same as makeObject()) 
+
 for example:-
-`var player;
+```
+var player;
 function start(){
 //Make entity
 player=makeMovingObject("player",100,200,50,60);
 //will render player even if it is outside the renderBound
 game.display(player);
-}`
+}
+```
 
 `toPixel(%)` will convert css(%,em,etc) to css(px) (useful for canvas as they cannot other units)
 for example:-
@@ -72,21 +80,28 @@ var middle=toPixel("50%")`
 `game.display()` will render the block regardless if object is in render bound or not but `game.render()` will only render objects present inside renderBound
 for example,lets assume canvas width and height to be 1000 and its position at {x:100,y:200}
 and lets make object
-`var block=makeObject("grass",150,250,50,60);`
-`var block2=makeObject("grass",150,25000,50,60);`
+```
+var block=makeObject("grass",150,250,50,60);
+var block2=makeObject("grass",150,25000,50,60);
+```
 This will make first object at x:150,y:250 and make their width and height 50 and 60 respectively and second block at same scale but at y:25000 position
 
 Now there are two difference between display and render
 
 1)game.render can take as many objects as its argument while game.display can only take 1 argument and that have to be object and not Array
 e.g 
+
+This will work
+```
 game.render(Object)
 game.render(Object,object,object,object)
 game.render(Object Array)
 game.render(Object Array,Object Array)
 game.display(Object)
+```
+
 This will not work
-game.display(Object,Object);
+`game.display(Object,Object);`
  
 `game.resume()` pause/resume the game
 
@@ -100,7 +115,8 @@ game.display(Object,Object);
 multiply this with all physics values so they remain aligned even in low-end devices which have low framerate
 
 ## Basic Script
-`//Define variables
+```
+//Define variables
 var backg,adv,player;
 //automatically selects canvas
        game.setCanvas();
@@ -155,7 +171,8 @@ var backg,adv,player;
          document.getElementById("deb").innerText=60/game.timelost;
          game.render(backg,player);
        },1000);
-       game.start();`
+       game.start();
+       ```
        
        
  ## Advanced
@@ -192,8 +209,10 @@ game.betascale() will scale the objects inside the canvas depending upon the dev
 `collision.addDetect()` will update the collision data and call function stored by `collision.detect(function)` --auto
 
 ### **Example Script**
-`collision.detect(function(){
+```
+collision.detect(function(){
       if(collision.collided.name==="grass"){
       console.log("You got collided with grass");
       }
-});`
+});
+```
