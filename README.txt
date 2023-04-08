@@ -1,4 +1,4 @@
-GameEngine.js doc
+#GameEngine.js doc
 
 --experimental means the function may change in future
 
@@ -71,7 +71,7 @@ checkFrame() will refresh the frames getting display per second
 
 onlyDraw() will be called till game gets resume
 
-Collision:-
+#Collision:-
 collision.detect(function) will call the function whenever any collision will happen between objects and entity
 
 collision.addDetect() will update the collision data and call function stored by collision.detect(function) --auto
